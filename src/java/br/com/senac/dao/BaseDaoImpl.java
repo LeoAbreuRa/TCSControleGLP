@@ -13,7 +13,7 @@ import org.hibernate.Transaction;
 public abstract class BaseDaoImpl<T, ID> 
                           implements BaseDao<T, ID>, Serializable{
 
-    private Transaction transaction;
+    Transaction transaction;
             
     @Override
     public void salvarOuAlterar(T entidade, Session session) throws HibernateException {
