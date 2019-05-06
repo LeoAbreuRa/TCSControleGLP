@@ -16,15 +16,11 @@ public class Funcionario extends Pessoa implements Serializable{
     public Funcionario() {
     }
 
-    public Funcionario(String cpf, String matricula, Long id, String nome, String email, String telefone) {
+    public Funcionario(Long id, String nome, String email, String telefone, String cpf, String matricula) {
         super(id, nome, email, telefone);
         this.cpf = cpf;
         this.matricula = matricula;
     }
-
-    
-    
-    
 
     public String getCpf() {
         return cpf;

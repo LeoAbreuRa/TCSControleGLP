@@ -10,11 +10,11 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public abstract class BaseDaoImpl<T, ID> 
-                          implements BaseDao<T, ID>, Serializable{
+public abstract class BaseDaoImpl<T, ID>
+        implements BaseDao<T, ID>, Serializable {
 
-    Transaction transaction;
-            
+    private Transaction transaction;
+
     @Override
     public void salvarOuAlterar(T entidade, Session session) throws HibernateException {
         transaction = session.beginTransaction();

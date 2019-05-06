@@ -29,9 +29,10 @@ public class FuncionarioDaoImplTest {
     public void testSalvar() {
         System.out.println("Teste Salvar");
         dao = new FuncionarioDaoImpl();
-        funcionario = new Funcionario("1232456", "159753", 1L, "jorge", "lol@gmail", "123456");
+        funcionario = new Funcionario(1L, "aaa", "aaa", "1123", "122334", "159753");
         session = HibernateUtil.abreSessao();
         dao.salvarOuAlterar(funcionario, session);
+        assertNotNull(funcionario.getId());
         session.close();
         System.out.println(funcionario);
     }
