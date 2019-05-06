@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Alunos
+ * @author Pedrão
  */
 public class GeradorTabela {
     public static void main(String[] args) {
