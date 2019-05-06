@@ -4,14 +4,14 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.com.senac.model.Pessoa</class>
     <class>br.com.senac.model.Endereco</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>br.com.senac.model.Funcionario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/controle_glp?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/controle_glp"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>

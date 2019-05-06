@@ -34,6 +34,18 @@ public class Pessoa implements Serializable {
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
 
+    public Pessoa(Long id, String nome, String email, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
+    public Pessoa() {
+    }
+    
+    
+
     public List<Endereco> getEnderecos() {
         return enderecos;
     }

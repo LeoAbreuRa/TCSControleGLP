@@ -1,10 +1,12 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package br.com.senac.dao;
 
+import br.com.senac.model.Endereco;
+import br.com.senac.model.Funcionario;
 import br.com.senac.model.Pessoa;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +25,9 @@ public class HibernateUtil {
         try {
             Configuration cfg = new Configuration();
             cfg.addAnnotatedClass(Pessoa.class);
+            cfg.addAnnotatedClass(Funcionario.class);
+            cfg.addAnnotatedClass(Endereco.class);
+            
 
             cfg.configure("/br/com/senac/dao/hibernate.cfg.xml");
 
