@@ -22,6 +22,7 @@ public class ProdutoDaoImplTest {
     private Session session;
     
     public ProdutoDaoImplTest() {
+        session = HibernateUtil.abreSessao();
     }
 
     @Test
