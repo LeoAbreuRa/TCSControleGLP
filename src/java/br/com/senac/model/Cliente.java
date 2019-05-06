@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -22,23 +23,25 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cliente")
+@PrimaryKeyJoinColumn(name = "idPessoa")
 public class Cliente extends Pessoa implements Serializable {
     
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Caminhao> caminhoes;
     private String cnpj;
     private String nomeSocial;
-    private int codigo;
 
     public Cliente() {
     }
 
-    public Cliente(List<Caminhao> caminhoes, String cnpj, String nomeSocial, int codigo) {
+    public Cliente(Long id, String nome, String email, String telefone, List<Caminhao> caminhoes, String cnpj, String nomeSocial) {
+        super(id, nome, email, telefone);
         this.caminhoes = caminhoes;
         this.cnpj = cnpj;
         this.nomeSocial = nomeSocial;
-        this.codigo = codigo;
     }
+
+    
 
     public List<Caminhao> getCaminhoes() {
         return caminhoes;
@@ -64,19 +67,4 @@ public class Cliente extends Pessoa implements Serializable {
         this.nomeSocial = nomeSocial;
     }
 
-    public int getCodigo() {
-        return codigo;
     }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-    
-  
-
-
-    }
-
-   
-    
-
