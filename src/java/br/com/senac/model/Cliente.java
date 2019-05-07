@@ -34,12 +34,13 @@ public class Cliente extends Pessoa implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, String email, String telefone, List<Caminhao> caminhoes, String cnpj, String nomeSocial) {
+    public Cliente(Long id, String nome, String email, String telefone,String cnpj, String nomeSocial) {
         super(id, nome, email, telefone);
-        this.caminhoes = caminhoes;
         this.cnpj = cnpj;
         this.nomeSocial = nomeSocial;
     }
+
+    
 
     
 
