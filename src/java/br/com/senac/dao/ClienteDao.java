@@ -15,6 +15,8 @@ import org.hibernate.Session;
  * @author rossi
  */
 public interface ClienteDao extends BaseDao<Cliente, Long> {
+    
+
 
     
 }
