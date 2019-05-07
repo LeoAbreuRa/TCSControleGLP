@@ -40,24 +40,22 @@ public class ProdutoDaoImplTest {
     @Test
     public void testListaTodos() {
         System.out.println("listaTodos");
-        Session session = null;
-        ProdutoDaoImpl instance = new ProdutoDaoImpl();
-        List<Produto> expResult = null;
-        List<Produto> result = instance.listaTodos(session);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        testSalvar();
+        session = HibernateUtil.abreSessao();
+        dao.listaTodos(session);
+        session.close();
+        System.out.println(produto);
     }
 
     @Test
     public void testPesquisaPorNome() {
         System.out.println("pesquisaPorNome");
-        String tipoProduto = "";
-        Session session = null;
-        ProdutoDaoImpl instance = new ProdutoDaoImpl();
-        List<Produto> expResult = null;
-        List<Produto> result = instance.pesquisaPorNome(tipoProduto, session);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        testSalvar();
+        session = HibernateUtil.abreSessao();
+        dao.pesquisaPorNome("P13", session);
+        assertNotNull(produto.getId());
+        session.close();
+        System.out.println(produto);
     }
     
     @Test
