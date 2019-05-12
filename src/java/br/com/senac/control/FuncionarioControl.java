@@ -12,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.ArrayDataModel;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -24,6 +25,7 @@ public class FuncionarioControl implements Serializable{
     
     private Funcionario funcionario;
     private FuncionarioDao funcionarioDao;
+    private List<Endereco> enderecos;
     private Endereco endereco;
     private Session session;
     private DataModel<Funcionario> modelFuncionarios;
@@ -81,9 +83,93 @@ public class FuncionarioControl implements Serializable{
             funcionarioDao.remover(funcionario, session);
             funcionarios.remove(funcionario);
             modelFuncionarios = new ListDataModel(funcionarios);
-            
+            Mensagem.excluir("Funcionario");
+            limpar();
         } catch (Exception e) {
+            System.out.println("erro ao excluir: " + e.getMessage());
+        }finally{
+            session.close();
         }
     }
+    
+    public void salvar(){
+        funcionarioDao = new FuncionarioDaoImpl();
+        abreSessao();
+        try {
+            enderecos.add(endereco);
+            funcionario.setEnderecos(enderecos);
+            endereco.setPessoa(funcionario);
+            funcionarioDao.salvarOuAlterar(funcionario, session);
+            Mensagem.salvar("Funcionario: " + funcionario.getNome());
+            funcionario = null;
+        } catch (HibernateException e) {
+            System.out.println("Erro ao salvar funcionario" + e.getMessage());
+        }catch(Exception e){
+            System.out.println("Erro ao salvar funcionarioDao Controle " + e.getMessage());
+        }finally{
+            session.close();
+        }
+    }
+    
+    public void limparTela(){
+        limpar();
+    }
+
+    public Funcionario getFuncionario() {
+        if(funcionario == null){
+            funcionario = new Funcionario();
+        }
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public Endereco getEndereco() {
+        if (endereco == null) {
+            endereco = new Endereco();
+        }
+
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public DataModel<Funcionario> getModelFuncionarios() {
+        return modelFuncionarios;
+    }
+
+    public void setModelFuncionarios(DataModel<Funcionario> modelFuncionarios) {
+        this.modelFuncionarios = modelFuncionarios;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public boolean isMostrar_toolbar() {
+        return mostrar_toolbar;
+    }
+
+    public void setMostrar_toolbar(boolean mostrar_toolbar) {
+        this.mostrar_toolbar = mostrar_toolbar;
+    }
+    
+    
     
 }
