@@ -23,6 +23,8 @@ public class ProdutoDaoImplTest {
     
     public ProdutoDaoImplTest() {
         session = HibernateUtil.abreSessao();
+        dao = new ProdutoDaoImpl();
+        
     }
 
     @Test
@@ -61,13 +63,16 @@ public class ProdutoDaoImplTest {
     @Test
     public void testSalvar() {
         System.out.println("Teste Salvar");
-        dao = new ProdutoDaoImpl();
         produto = new Produto(1L, 50, "p13", "Ultragás");
-        session = HibernateUtil.abreSessao();
-        dao.salvarOuAlterar(produto, session);
-        assertNotNull(produto.getId());
-        session.close();
-        System.out.println(produto);
+              
+        try {
+            dao.salvarOuAlterar(produto, session);
+            assertNotNull(produto.getId());
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar teste " + e.getMessage());
+        }
+    }
+
     }
     
-}
+
