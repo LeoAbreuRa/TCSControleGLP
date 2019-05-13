@@ -35,5 +35,20 @@ public class ClienteDaoImpl extends BaseDaoImpl<Cliente, Long> implements Client
         return consulta.list();
 //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Cliente pesquisarCNPJ(String cnpj, Session session) throws HibernateException {
+        Query consulta = session.createQuery("from Cliente c where cnpj = :cnpj");
+        consulta.setParameter("cnpj", cnpj);
+        return (Cliente)consulta.uniqueResult();
+    }
+
+    @Override
+    public List<Cliente> pesquisarNomeSocial(String nomeSocial, Session session) throws HibernateException {
+
+        Query consulta = session.createQuery("from Cliente where nomeSocial like :nomeSocial");
+        consulta.setParameter("nomeSocial","%" + nomeSocial + "%");
+        return consulta.list();
+    }
     
 }
