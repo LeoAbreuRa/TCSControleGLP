@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.ArrayDataModel;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import org.hibernate.HibernateException;
