@@ -7,7 +7,7 @@ import br.com.senac.model.Endereco;
 import br.com.senac.model.Funcionario;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -18,7 +18,7 @@ import org.hibernate.Session;
  *
  * @author Leo
  */
-@ManagedBean
+@ManagedBean(name = "funcionarioC")
 @ViewScoped
 public class FuncionarioControl implements Serializable{
     

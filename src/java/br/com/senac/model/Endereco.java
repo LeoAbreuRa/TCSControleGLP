@@ -37,6 +37,8 @@ public class Endereco implements Serializable {
     private String cep;
     @Column(nullable = false)
     private String logradouro;
+    @Column(nullable = false)
+    private String estado;
     @ManyToOne
     @JoinColumn(name = "idPessoa")
     private Pessoa pessoa;
@@ -96,6 +98,16 @@ public class Endereco implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 
     @Override
     public int hashCode() {

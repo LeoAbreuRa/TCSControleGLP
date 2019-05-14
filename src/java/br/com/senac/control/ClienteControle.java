@@ -86,9 +86,6 @@ public class ClienteControle implements Serializable {
     }finally {
            session.close();
         }
-    
-    
-    
 }
 
 
